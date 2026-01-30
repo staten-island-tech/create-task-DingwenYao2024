@@ -7,10 +7,28 @@ const pulls = [
   { name: "Mythic", chance: 1.5 },
 ];
 
+//array stuff
+
 let pity = 0;
 const softpity = 20;
 const hardpity = 30;
 
-//array stuff
-//have the function give a random rarity from the array
-//give each rarity its own chance percentage of obtaining itd
+
+function getNumb(max) {
+  return Math.floor(Math.random() * max);
+};
+
+function rolling() {
+  const x = getNumb(101);
+  if (x >= 1 && x <= 50) {
+    console.log("Common");
+  }; 
+};
+
+rolling();
+  
+
+//Have a random number generator and if the number lands bewteen 1-50, have it display common. If 51-75, display uncommon. If 76-90, rare. ETC...
+//FOR CHANCES
+
+//Pity system (Hard/Soft)
