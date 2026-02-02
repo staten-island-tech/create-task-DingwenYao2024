@@ -9,11 +9,19 @@ const pulls = [
 
 //array stuff
 
-const readline = require("readline").createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+function gambling() {
+  let input = prompt("Do you wish to roll?");
 
+  let ifTrue;
+
+  if (input === "yes") {
+    ifTrue = true;
+  } else if (input === "no") {
+    ifTrue = false;
+  } else {
+    return;
+  }
+  if (ifTrue === true) {
 function getNumb(max) {
   return Math.floor(Math.random() * max);
 }
