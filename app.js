@@ -14,6 +14,9 @@ const readline = require("readline").createInterface({
   output: process.stdout
 });
 
+function getNumb(max) {
+  return Math.floor(Math.random() * max);
+};
 
 function rolling() {
   const x = getNumb(101);
