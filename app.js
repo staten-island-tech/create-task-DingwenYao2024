@@ -9,94 +9,54 @@ const pulls = [
 
 //array stuff
 
-function gambling() {
-  let input = prompt("Do you wish to roll?");
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-  let ifTrue;
-
-  if (input === "yes") {
-    ifTrue = true;
-  } else if (input === "no") {
-    ifTrue = false;
-  } else {
-    return;
-  }
-  if (ifTrue === true) {
 function getNumb(max) {
   return Math.floor(Math.random() * max);
-};
+}
 
 function rolling() {
   const x = getNumb(101);
-  if (x >= 1 && x <= 50) {
-    console.log("Common");
-  }; 
-  if (x >= 51 && x <= 75) {
-    console.log("Uncommon");
-  };
-  if (x >= 76 && x <= 90) {
-    console.log("Rare");
-  };
-  if (x >= 91 && x <= 95) {
-    console.log("Epic");
-  };
-  if (x >= 96 && x <= 98) {
-    console.log("Legendary");
-  };
-  if (x >= 99 && x <= 100) {
-    console.log("Mythic");
-  };
-};
-
-rolling();
-  };
-};
-
-gambling();
-/* 
-if (ifTrue === true) {
-function getNumb(max) {
-  return Math.floor(Math.random() * max);
-};
-
-function rolling() {
-  const x = getNumb(101);
-  if (x >= 1 && x <= 50) {
-    console.log("Common");
-  }; 
-  if (x >= 51 && x <= 75) {
-    console.log("Uncommon");
-  };
-  if (x >= 76 && x <= 90) {
-    console.log("Rare");
-  };
-  if (x >= 91 && x <= 95) {
-    console.log("Epic");
-  };
-  if (x >= 96 && x <= 98) {
-    console.log("Legendary");
-  };
-  if (x >= 99 && x <= 100) {
-    console.log("Mythic");
-  };
-};
-
-rolling();
-
-
-//Have a random number generator and if the number lands bewteen 1-50, have it display common. If 51-75, display uncommon. If 76-90, rare. ETC...
-//FOR CHANCES
+  if (x <= 50) return "Common";
+  if (x <= 75) return "Uncommon";
+  if (x <= 90) return "Rare";
+  if (x <= 95) return "Epic";
+  if (x <= 98) return "Legendary";
+  return "Mythic";
+}
 
 let pity = 0;
-const guaranteedpity = 10;
+const guaranteedPity = 10;
 
-function pitycounter () {}
+function rollPity() {
+  pity++;
+  const result = rolling();
+  if (result === "Mythic" || pity >= guaranteedPity) {
+    pity = 0;
+    return "Mythic (Pity)";
+  }
+  return result;
+}
 
-} else if (ifTrue === false){
-  return
-};
-};
+function doYouRoll() {
+  readline.question("Do you wish to roll? (yes/no) ", input => {
+    const answer = input.toLowerCase().trim();
 
-gambling();
+    if (answer === "yes") {
+      const outcome = rollPity();
+      console.log(outcome);
+      doYouRoll();
+    } else if (answer === "no") {
+      console.log("See ya");
+      readline.close();
+    } else {
+      console.log("Please answer yes or no.");
+      doYouRoll();
+    }
+  });
+}
 
-//Pity system (Hard/Soft) */
+doYouRoll();
