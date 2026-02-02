@@ -8,7 +8,18 @@ const pulls = [
 ];
 
 //array stuff
+function gambling() {
+let input = console.log("Do you wish to roll?")
 
+let ifTrue;
+
+if (input === "yes"){
+  ifTrue = true;
+} else if (input === "no"){
+  ifTrue = false
+};
+
+if (ifTrue === true) {
 function getNumb(max) {
   return Math.floor(Math.random() * max);
 };
@@ -37,6 +48,7 @@ function rolling() {
 
 rolling();
 
+
 //Have a random number generator and if the number lands bewteen 1-50, have it display common. If 51-75, display uncommon. If 76-90, rare. ETC...
 //FOR CHANCES
 
@@ -44,5 +56,12 @@ let pity = 0;
 const guaranteedpity = 10;
 
 function pitycounter () {}
+
+} else if (ifTrue === false){
+  return
+};
+};
+
+gambling();
 
 //Pity system (Hard/Soft)
