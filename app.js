@@ -22,7 +22,7 @@ function gambling() {
     return;
   }
   if (ifTrue === true) {
-function getNumb(max) {
+  function getNumb(max) {
   return Math.floor(Math.random() * max);
 };
 
